@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans>
+<!--
+Bean的生命周期的配置（了解）
+	init-method		:Bean被初始化的时候执行的方法
+	destroy-method	:Bean被销毁的时候执行的方法（Bean是单例创建，工厂关闭）
+Bean的作用范围的配置（重点）
+λ	scope			：Bean的作用范围
+ν	singleton		：默认的，Spring会采用单例模式创建这个对象。
+ν	prototype	：多例模式。（Struts2和Spring整合一定会用到）
+ν	request		：应用在web项目中，Spring创建这个类以后，将这个类存入到request范围中。
+ν	session		：应用在web项目中，Spring创建这个类以后，将这个类存入到session范围中。
+ν	globalsession	：应用在web项目中，必须在porlet环境下使用。但是如果没有这种环境，相对于session。
+
+P名称空间的属性注入（Spring2.5以后）
+λ	通过引入p名称空间完成属性的注入：
+ν	写法：
+υ	普通属性	p:属性名=”值”
+υ	对象属性	p:属性名-ref=”值”
+λ	P名称空间的引入
+
+
+-->
+        <bean id="userDao"  class="com.ellden.spring.ioc.UserDaoMybatisImpl" init-method="setup" destroy-method="destroy" scope="singleton" p:age="20" p:car-ref="car">
+            <property name="userName" value="hello"></property>
+        </bean>
+        <bean id="carInfo" class="com.ellden.spring.ioc.CarInfo">
+        </bean>
+        <bean id="car" class="com.ellden.spring.ioc.Car" >
+            <property name="carName" value="#{carInfo.name}"></property>
+            <property name="price" value="#{carInfo.cacu()}"></property>
+        </bean>
+
+
+        <bean id="userDao2"  class="com.ellden.spring.ioc.UserDaoMybatisImpl" >
+            <property name="userName" value="#{'se'}"></property>
+            <property name="car" value="#{car}"></property>
+        </bean>
+        <!--引入其它配置文件-->
+    <import resource="applicationContext2.xml"></import>
+
+    </beans>
+</beans>
