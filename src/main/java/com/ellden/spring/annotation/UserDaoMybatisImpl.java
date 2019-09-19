@@ -2,9 +2,9 @@ package com.ellden.spring.annotation;
 
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component("user")  //相当于在配置文件中配置了<bean id = "user" class = "com.ellden.spring.annotation.UserDaoMybatisImpl"></bean>
+@Repository("user")  //相当于在配置文件中配置了<bean id = "user" class = "com.ellden.spring.annotation.UserDaoMybatisImpl"></bean>
 public class UserDaoMybatisImpl implements UserDao {
     /**
      * 属性注入有set方法在set方法上使用注解，没有set方法在属性上使用注解
@@ -29,7 +29,7 @@ public class UserDaoMybatisImpl implements UserDao {
 
     @Override
     public void save() {
-
+        System.out.println("UserDaoMybatisImpl save方法执行了。。。");
     }
 
     public UserDaoMybatisImpl() {

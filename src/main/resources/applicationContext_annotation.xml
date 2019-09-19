@@ -7,7 +7,12 @@
        http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--组件扫描 哪些包下的类使用IOC注解-->
-    <context:component-scan base-package="com.ellden.spring.annotation"></context:component-scan>
+    <!--组件扫描 哪些包下的类上使用IOC注解-->
+    <!--<context:component-scan base-package="com.ellden.spring.annotation"></context:component-scan>-->
 
+    <!--在未打开包扫描的情况下，可以使用属性注入的注解 @Value @Aotuwire @Qulifer @Resource-->
+    <context:annotation-config/>
+
+    <bean id ="orderService" class="com.ellden.spring.annotation.OrderServiceImpl"></bean>
+    <bean id="orderDao" class="com.ellden.spring.annotation.OrderDaoImpl"></bean>
 </beans>

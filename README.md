@@ -1,5 +1,5 @@
-# spring 本项目供学习使用
-2019-9-19
+# spring 
+##2019-9-18
 1.1.1	Spring的概述
 1.1.1.1	什么是Spring
 λ	Spring：SE/EE开发的一站式框架。
@@ -178,3 +178,36 @@ Bean已经都交给Spring管理，Spring创建这些类的时候，有几种方�
 
 1.5.1.2	在一个配置文件中引入多个配置文件
 
+##2019-9-19
+ @Component:组件.(作用在类上) 
+ Spring中提供@Component的三个衍生注解:(功能目前来讲是一致的) 
+ * @Controller :WEB层 
+ * @Service  :业务层 
+ * @Repository :持久层  
+ 这三个注解是为了让标注类本身的用途清晰，Spring在后续版本会对其增强 
+ 
+ 属性注入的注解:(使用注解注入的方式,可以不用提供set方法.) 
+ * @Value  :用于注入普通类型. 
+ * @Autowired :自动装配: 
+    * 默认按类型进行装配. 
+    * 按名称注入: @Qualifier:强制使用名称注入. 
+ * @Resource相当于: * @Autowired和@Qualifier一起使用. 
+ 
+Bean的作用范围的注解: 
+  @Scope: 
+  * singleton:单例 
+  * prototype:多例 
+Bean的生命周期的配置: 
+ @PostConstruct :相当于init-method
+ @PreDestroy  :相当于destroy-method 
+ 
+ XML和注解: 
+ * XML :结构清晰. 
+ * 注解 :开发方便.(属性注入.)  
+ 
+ 实际开发中还有一种XML和注解整合开发: 
+ * Bean有XML配置.但是使用的属性使用注解注入.
+ 
+ 
+ 
+ 
